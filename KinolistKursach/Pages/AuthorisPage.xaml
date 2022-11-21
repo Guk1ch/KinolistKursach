@@ -1,0 +1,102 @@
+﻿<Page x:Class="KinolistKursach.Pages.AuthorisPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:KinolistKursach.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AuthorisPage">
+
+    <Grid Background="#FFB773">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.RowSpan="2"
+                    Grid.Column="0" Grid.ColumnSpan="4" 
+                    Background="#FF7C00" Margin="0, 0, 0, 40"/>
+        <TextBlock Text="КинокраД" 
+                   Grid.Row="0" 
+                   Grid.Column="0" Grid.ColumnSpan="4" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center" 
+                   FontSize="50" FontWeight="Bold"/>
+        <TextBlock Text="Рады вас видеть!"
+                   Grid.Row="1"
+                   Grid.Column="0" Grid.ColumnSpan="4"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                   FontSize="30" FontWeight="Bold"
+                   Margin="54,31,52,42" Grid.RowSpan="2"/>
+        <TextBox x:Name="TbLogin"
+                 Grid.Row="2"
+                 Grid.Column="1" Grid.ColumnSpan="2"
+                 VerticalAlignment="Bottom"
+                 Height="31"
+                 FontSize="20" Margin="19,0,19,35" Grid.RowSpan="2"/>
+        <TextBlock Text="Логин"
+                   FontWeight="DemiBold"
+                   Grid.Row="2"
+                   Grid.Column="1" Grid.ColumnSpan="2"
+                   VerticalAlignment="Top"
+                   FontSize="19" Margin="19,16,0,0"/>
+        <PasswordBox x:Name="TbPassword"
+                 Grid.Row="4"
+                 Grid.Column="1" Grid.ColumnSpan="2"
+                 VerticalAlignment="Bottom"
+                 Height="31"
+                 FontSize="20" Margin="19,0,19,28"/>
+        <TextBlock Text="Пароль"
+                   FontWeight="DemiBold"
+                   Grid.Row="3"
+                   Grid.Column="1" Grid.ColumnSpan="2"
+                   VerticalAlignment="Top"
+                   FontSize="19" Margin="19,21,0,0"/>
+        <Button x:Name="BtnAuthoriz"
+                Content="Войти"
+                Grid.Row="4"
+                Grid.Column="1" Grid.ColumnSpan="2"
+                Background="#04859D"
+                Height="30"
+                Margin="19,35,19,0"
+                VerticalAlignment="Top"
+                FontSize="15" FontWeight="Bold"
+                Click="BtnAuthorizClick" Grid.RowSpan="2"/>
+        <TextBlock x:Name="TbRegist"
+                   Text="Нет аккаунта? Самое время его завести!"
+                   Grid.Row="5"
+                   Grid.Column="0" Grid.ColumnSpan="4"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Center"
+                   FontSize="14"
+                   Foreground="Black"
+                   MouseDown="TextBlockMouseDown"
+                   MouseEnter="TextBlockMouseEnter"
+                   MouseLeave="TextBlockMouseLeave" 
+                   Margin="76,27,88,0" Width="285"/>
+        <CheckBox x:Name="CbSaveLogin"
+                  Content="Запомнить аккаунт?"
+                  IsChecked="True"
+                  Grid.Row="6"
+                  Grid.Column="1" Grid.ColumnSpan="2"
+                  VerticalAlignment="Top"
+                  HorizontalAlignment="Center"
+                  FontSize="14"
+                  Foreground="Black" 
+                  Margin="100,0,125,0" 
+                  Width="175"/>
+
+    </Grid>
+</Page>

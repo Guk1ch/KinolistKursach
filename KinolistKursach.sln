@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32106.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KinolistKursach", "KinolistKursach\KinolistKursach.csproj", "{357AEB0B-0F8C-4BF8-9AA1-27C1FDF5EC58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{48443D8A-7B7D-4220-A8B8-87B49D1B6742}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{357AEB0B-0F8C-4BF8-9AA1-27C1FDF5EC58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{357AEB0B-0F8C-4BF8-9AA1-27C1FDF5EC58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{357AEB0B-0F8C-4BF8-9AA1-27C1FDF5EC58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{357AEB0B-0F8C-4BF8-9AA1-27C1FDF5EC58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48443D8A-7B7D-4220-A8B8-87B49D1B6742}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48443D8A-7B7D-4220-A8B8-87B49D1B6742}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48443D8A-7B7D-4220-A8B8-87B49D1B6742}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48443D8A-7B7D-4220-A8B8-87B49D1B6742}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1ADF725C-4877-4A5A-915D-399C289C9AF5}
+	EndGlobalSection
+EndGlobal
