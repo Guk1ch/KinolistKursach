@@ -109,6 +109,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\FriendCollectionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\FriendPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -159,6 +163,9 @@
     </Compile>
     <Compile Include="Pages\FilmPage.xaml.cs">
       <DependentUpon>FilmPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\FriendCollectionPage.xaml.cs">
+      <DependentUpon>FriendCollectionPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\FriendPage.xaml.cs">
       <DependentUpon>FriendPage.xaml</DependentUpon>

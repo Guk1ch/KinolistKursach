@@ -29,7 +29,7 @@
         <StackPanel Grid.Row="0" Grid.RowSpan="2"
                     Grid.Column="0" Grid.ColumnSpan="4" 
                     Background="#FF7C00" Margin="0, 0, 0, 40"/>
-        <TextBlock Text="КинокраД" 
+        <TextBlock Text="КиноЛист" 
                    Grid.Row="0" 
                    Grid.Column="0" Grid.ColumnSpan="4" 
                    HorizontalAlignment="Center" VerticalAlignment="Center" 
@@ -89,10 +89,9 @@
                Grid.Row="1" Grid.RowSpan="5"
                Grid.Column="0" Grid.ColumnSpan="2"
                HorizontalAlignment="Center"
-               VerticalAlignment="Center"
-               Margin="100,35,100,45" 
-               Width="200"
-               Height="201"/>
+               VerticalAlignment="Center" 
+               Width="540"
+               Height="350"/>
         <Button x:Name="btn_newphoto"
                 Content="Загрузите фото"
                 Grid.ColumnSpan="2"
