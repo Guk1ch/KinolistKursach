@@ -4,17 +4,22 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="be3520b873fb4dfaa71f5fd92f98cebd" Name="Diagram1">
-        <EntityTypeShape EntityType="KinolistModel.Collection" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="KinolistModel.Film" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="KinolistModel.Film_Collection" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="KinolistModel.Follow" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="KinolistModel.User" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
-        <AssociationConnector Association="KinolistModel.FK_Collection_User" ManuallyRouted="false" />
-        <AssociationConnector Association="KinolistModel.FK_Film_Collection_Collection" ManuallyRouted="false" />
-        <AssociationConnector Association="KinolistModel.FK_Film_Collection_Film" ManuallyRouted="false" />
-        <AssociationConnector Association="KinolistModel.FK_Follow_User" ManuallyRouted="false" />
-        <AssociationConnector Association="KinolistModel.FK_Follow_User1" ManuallyRouted="false" />
+      <Diagram DiagramId="23d606a0b0a14625b170b1aad3bd6789" Name="Diagram1">
+        <EntityTypeShape EntityType="KinolistFinalModel.Collection" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KinolistFinalModel.Film" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KinolistFinalModel.Film_Collection" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KinolistFinalModel.Follow" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KinolistFinalModel.Message" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KinolistFinalModel.MessInDialog" Width="1.5" PointX="5.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="KinolistFinalModel.User" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <AssociationConnector Association="KinolistFinalModel.FK_Collection_User" ManuallyRouted="false" />
+        <AssociationConnector Association="KinolistFinalModel.FK_Film_Collection_Collection" ManuallyRouted="false" />
+        <AssociationConnector Association="KinolistFinalModel.FK_Film_Collection_Film" ManuallyRouted="false" />
+        <AssociationConnector Association="KinolistFinalModel.FK_Follow_User" ManuallyRouted="false" />
+        <AssociationConnector Association="KinolistFinalModel.FK_Follow_User1" ManuallyRouted="false" />
+        <AssociationConnector Association="KinolistFinalModel.FK_MessInDialog_Follow" ManuallyRouted="false" />
+        <AssociationConnector Association="KinolistFinalModel.FK_Message_User" ManuallyRouted="false" />
+        <AssociationConnector Association="KinolistFinalModel.FK_MessInDialog_Message" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

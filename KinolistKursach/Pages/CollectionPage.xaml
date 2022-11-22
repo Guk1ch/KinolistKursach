@@ -87,7 +87,7 @@
                             <DataTemplate>
                                 <Button x:Name="BtnDel"
                                         Content="Удалить"
-                                        Background="#FF780000"
+                                        Background="#04859D"
                                         BorderBrush="Black"
                                         Click="BtnDelClick"/>
                             </DataTemplate>

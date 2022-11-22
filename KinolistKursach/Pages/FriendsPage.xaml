@@ -29,6 +29,13 @@
         <StackPanel Grid.Row="0" Grid.RowSpan="2"
                     Grid.Column="0" Grid.ColumnSpan="5" 
                     Background="#FF7C00" Margin="0, 0, 0, 40"/>
+        <TextBlock Text="КиноЛист" 
+                   Grid.Row="0" 
+                   Grid.Column="0" Grid.ColumnSpan="4" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center" 
+                   FontSize="60" 
+                   Foreground="Black"
+                   FontWeight="Bold"/>
         <TextBlock x:Name="TbBack"
                    Text="←"
                    Grid.Row="0"
@@ -40,8 +47,8 @@
                    MouseLeave="TbBackMouseLeave"/>
         <ListView x:Name="LvFriends"
                   ItemsSource="{Binding follows}"
-                  Grid.Row="2" Grid.RowSpan="10"
-                  Grid.Column="2" Grid.ColumnSpan="9"
+                  Grid.Row="2" Grid.RowSpan="5"
+                  Grid.Column="0" Grid.ColumnSpan="5"
                    Background="#FFB773"
                   SelectionChanged="LvFriendsSelectionChanged">
             <ListView.View>
@@ -60,7 +67,7 @@
                             <DataTemplate>
                                 <Button x:Name="BtnChat"
                                         Content="Написать"
-                                        Background="#FF780000"
+                                        Background="#04859D"
                                         BorderBrush="Black"
                                         Click="BtnChatClick"/>
                             </DataTemplate>

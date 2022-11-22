@@ -56,12 +56,9 @@ namespace KinolistKursach.Pages
 
 			worksheet.Cells[1][rowIndex] = export.nikcname;
 			worksheet.Cells[2][rowIndex] = export.countViewedFilm;
-			worksheet.Cells[3][rowIndex] = export.countTimeViewedFilm;
+			worksheet.Cells[3][rowIndex] = export.countTimeViewedFilm +" "+"мин";
 
 			application.Visible = true;
-
-
-
 
 		}
 		private void TbBackMouseDown(object sender, MouseButtonEventArgs e)

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище KinolistModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="KinolistFinalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Collection">
           <Key>
             <PropertyRef Name="ID" />
@@ -44,6 +44,23 @@
           <Property Name="ID_Follower_User" Type="int" />
           <Property Name="ID_Following_User" Type="int" />
           <Property Name="Date_follow" Type="date" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdSenderUser" Type="int" />
+          <Property Name="TextMessage" Type="nvarchar(max)" />
+          <Property Name="Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MessInDialog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdMessage" Type="int" />
+          <Property Name="IdFollow" Type="int" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -115,11 +132,49 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Хранилище KinolistModelContainer">
+        <Association Name="FK_Message_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="IdSenderUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MessInDialog_Follow">
+          <End Role="Follow" Type="Self.Follow" Multiplicity="0..1" />
+          <End Role="MessInDialog" Type="Self.MessInDialog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Follow">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MessInDialog">
+              <PropertyRef Name="IdFollow" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MessInDialog_Message">
+          <End Role="Message" Type="Self.Message" Multiplicity="0..1" />
+          <End Role="MessInDialog" Type="Self.MessInDialog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Message">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MessInDialog">
+              <PropertyRef Name="IdMessage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KinolistFinalModelStoreContainer">
           <EntitySet Name="Collection" EntityType="Self.Collection" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Film" EntityType="Self.Film" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Film_Collection" EntityType="Self.Film_Collection" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Follow" EntityType="Self.Follow" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MessInDialog" EntityType="Self.MessInDialog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Collection_User" Association="Self.FK_Collection_User">
             <End Role="User" EntitySet="User" />
@@ -141,12 +196,24 @@
             <End Role="User" EntitySet="User" />
             <End Role="Follow" EntitySet="Follow" />
           </AssociationSet>
+          <AssociationSet Name="FK_Message_User" Association="Self.FK_Message_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MessInDialog_Follow" Association="Self.FK_MessInDialog_Follow">
+            <End Role="Follow" EntitySet="Follow" />
+            <End Role="MessInDialog" EntitySet="MessInDialog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MessInDialog_Message" Association="Self.FK_MessInDialog_Message">
+            <End Role="Message" EntitySet="Message" />
+            <End Role="MessInDialog" EntitySet="MessInDialog" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="KinolistModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="KinolistFinalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Collection">
           <Key>
             <PropertyRef Name="ID" />
@@ -193,6 +260,28 @@
           <Property Name="Date_follow" Type="DateTime" Precision="0" />
           <NavigationProperty Name="User" Relationship="Self.FK_Follow_User" FromRole="Follow" ToRole="User" />
           <NavigationProperty Name="User1" Relationship="Self.FK_Follow_User1" FromRole="Follow" ToRole="User" />
+          <NavigationProperty Name="MessInDialog" Relationship="Self.FK_MessInDialog_Follow" FromRole="Follow" ToRole="MessInDialog" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdSenderUser" Type="Int32" />
+          <Property Name="TextMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Message_User" FromRole="Message" ToRole="User" />
+          <NavigationProperty Name="MessInDialog" Relationship="Self.FK_MessInDialog_Message" FromRole="Message" ToRole="MessInDialog" />
+        </EntityType>
+        <EntityType Name="MessInDialog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdMessage" Type="Int32" />
+          <Property Name="IdFollow" Type="Int32" />
+          <NavigationProperty Name="Follow" Relationship="Self.FK_MessInDialog_Follow" FromRole="MessInDialog" ToRole="Follow" />
+          <NavigationProperty Name="Message" Relationship="Self.FK_MessInDialog_Message" FromRole="MessInDialog" ToRole="Message" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -206,6 +295,7 @@
           <NavigationProperty Name="Collection" Relationship="Self.FK_Collection_User" FromRole="User" ToRole="Collection" />
           <NavigationProperty Name="Follow" Relationship="Self.FK_Follow_User" FromRole="User" ToRole="Follow" />
           <NavigationProperty Name="Follow1" Relationship="Self.FK_Follow_User1" FromRole="User" ToRole="Follow" />
+          <NavigationProperty Name="Message" Relationship="Self.FK_Message_User" FromRole="User" ToRole="Message" />
         </EntityType>
         <Association Name="FK_Collection_User">
           <End Role="User" Type="Self.User" Multiplicity="0..1" />
@@ -267,11 +357,49 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="KinolistEntities" annotation:LazyLoadingEnabled="true">
+        <Association Name="FK_MessInDialog_Follow">
+          <End Role="Follow" Type="Self.Follow" Multiplicity="0..1" />
+          <End Role="MessInDialog" Type="Self.MessInDialog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Follow">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MessInDialog">
+              <PropertyRef Name="IdFollow" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="IdSenderUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MessInDialog_Message">
+          <End Role="Message" Type="Self.Message" Multiplicity="0..1" />
+          <End Role="MessInDialog" Type="Self.MessInDialog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Message">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MessInDialog">
+              <PropertyRef Name="IdMessage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KinolistFinalEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Collection" EntityType="Self.Collection" />
           <EntitySet Name="Film" EntityType="Self.Film" />
           <EntitySet Name="Film_Collection" EntityType="Self.Film_Collection" />
           <EntitySet Name="Follow" EntityType="Self.Follow" />
+          <EntitySet Name="Message" EntityType="Self.Message" />
+          <EntitySet Name="MessInDialog" EntityType="Self.MessInDialog" />
           <EntitySet Name="User" EntityType="Self.User" />
           <AssociationSet Name="FK_Collection_User" Association="Self.FK_Collection_User">
             <End Role="User" EntitySet="User" />
@@ -293,15 +421,27 @@
             <End Role="User" EntitySet="User" />
             <End Role="Follow" EntitySet="Follow" />
           </AssociationSet>
+          <AssociationSet Name="FK_MessInDialog_Follow" Association="Self.FK_MessInDialog_Follow">
+            <End Role="Follow" EntitySet="Follow" />
+            <End Role="MessInDialog" EntitySet="MessInDialog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_User" Association="Self.FK_Message_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MessInDialog_Message" Association="Self.FK_MessInDialog_Message">
+            <End Role="Message" EntitySet="Message" />
+            <End Role="MessInDialog" EntitySet="MessInDialog" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище KinolistModelContainer" CdmEntityContainer="KinolistEntities">
+        <EntityContainerMapping StorageEntityContainer="KinolistFinalModelStoreContainer" CdmEntityContainer="KinolistFinalEntities">
           <EntitySetMapping Name="Collection">
-            <EntityTypeMapping TypeName="KinolistModel.Collection">
+            <EntityTypeMapping TypeName="KinolistFinalModel.Collection">
               <MappingFragment StoreEntitySet="Collection">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -312,7 +452,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Film">
-            <EntityTypeMapping TypeName="KinolistModel.Film">
+            <EntityTypeMapping TypeName="KinolistFinalModel.Film">
               <MappingFragment StoreEntitySet="Film">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -325,7 +465,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Film_Collection">
-            <EntityTypeMapping TypeName="KinolistModel.Film_Collection">
+            <EntityTypeMapping TypeName="KinolistFinalModel.Film_Collection">
               <MappingFragment StoreEntitySet="Film_Collection">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ID_Film" ColumnName="ID_Film" />
@@ -335,7 +475,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Follow">
-            <EntityTypeMapping TypeName="KinolistModel.Follow">
+            <EntityTypeMapping TypeName="KinolistFinalModel.Follow">
               <MappingFragment StoreEntitySet="Follow">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ID_Follower_User" ColumnName="ID_Follower_User" />
@@ -344,8 +484,27 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Message">
+            <EntityTypeMapping TypeName="KinolistFinalModel.Message">
+              <MappingFragment StoreEntitySet="Message">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdSenderUser" ColumnName="IdSenderUser" />
+                <ScalarProperty Name="TextMessage" ColumnName="TextMessage" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MessInDialog">
+            <EntityTypeMapping TypeName="KinolistFinalModel.MessInDialog">
+              <MappingFragment StoreEntitySet="MessInDialog">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IdMessage" ColumnName="IdMessage" />
+                <ScalarProperty Name="IdFollow" ColumnName="IdFollow" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="User">
-            <EntityTypeMapping TypeName="KinolistModel.User">
+            <EntityTypeMapping TypeName="KinolistFinalModel.User">
               <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Nickname" ColumnName="Nickname" />
@@ -372,7 +531,7 @@
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

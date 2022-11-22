@@ -145,6 +145,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\SellectionCollectionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\StatisticPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -198,6 +202,9 @@
     </Compile>
     <Compile Include="Pages\SearchFriendPage.xaml.cs">
       <DependentUpon>SearchFriendPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SellectionCollectionWindow.xaml.cs">
+      <DependentUpon>SellectionCollectionWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\StatisticPage.xaml.cs">
       <DependentUpon>StatisticPage.xaml</DependentUpon>

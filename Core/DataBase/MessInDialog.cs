@@ -12,14 +12,13 @@ namespace Core.DataBase
     using System;
     using System.Collections.Generic;
     
-    public partial class Film_Collection
+    public partial class MessInDialog
     {
         public int ID { get; set; }
-        public Nullable<int> ID_Film { get; set; }
-        public Nullable<int> ID_Collection { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
+        public Nullable<int> IdMessage { get; set; }
+        public Nullable<int> IdFollow { get; set; }
     
-        public virtual Collection Collection { get; set; }
-        public virtual Film Film { get; set; }
+        public virtual Follow Follow { get; set; }
+        public virtual Message Message { get; set; }
     }
 }

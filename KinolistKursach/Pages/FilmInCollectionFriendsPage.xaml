@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="FilmInCollectionFriendsPage">
 
-    <Grid>
+    <Grid Background="#FFB773">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -42,7 +42,7 @@
 
         <StackPanel Grid.Row="0"
                     Grid.Column="0" Grid.ColumnSpan="13" 
-                    Background="#FF780000"/>
+                    Background="#FF7C00"/>
         <TextBlock Text="{Binding friendCollection.Name}" 
                    Grid.Row="0"
                    Grid.Column="0" Grid.ColumnSpan="12" 
@@ -63,7 +63,7 @@
                   ItemsSource="{Binding filmsToFill}"
                   Grid.Row="2" Grid.RowSpan="11" Grid.ColumnSpan="13"
                   SelectionChanged="lv_film_SelectionChanged" 
-                  Margin="-10,0,0,0">
+                  Background="#FFB773">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid Columns="2"/>

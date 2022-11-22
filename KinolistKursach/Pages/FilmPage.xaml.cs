@@ -65,8 +65,8 @@ namespace KinolistKursach.Pages
 
 		private void ImgPlusMouseDown(object sender, MouseButtonEventArgs e)
 		{
-			//SelectionCollectionWindow selectionCollectionWindow = new SelectionCollectionWindow(filmToFill.ID);
-			//selectionCollectionWindow.ShowDialog();
+			SellectionCollectionWindow selectionCollectionWindow = new SellectionCollectionWindow(filmToFill.ID);
+			selectionCollectionWindow.ShowDialog();
 		}
 
 		private void CbWatchChecked(object sender, RoutedEventArgs e)

@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SearchFriendPage">
 
-    <Grid>
+    <Grid  Background="#FFB773">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -41,15 +41,21 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0"
                     Grid.Column="0" Grid.ColumnSpan="13" 
-                    Background="#FF780000"/>
-        <StackPanel Grid.Column="0"
-                    Grid.Row="0" Grid.RowSpan="13"
-                    Background="#FF780000"/>
-        <TextBlock Text="КинокраД" 
+                    Background="#FF7C00"/>
+        <TextBlock x:Name="TbBack"
+                   Text="←"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   FontWeight="Bold" FontSize="30"
+                   Margin="10,0,0,7"
+                   MouseDown="TbBackMouseDown"
+                   MouseEnter="TbBackMouseEnter"
+                   MouseLeave="TbBackMouseLeave"/>
+        <TextBlock Text="КиноЛист" 
                    Grid.Row="0"
                    Grid.Column="0" Grid.ColumnSpan="12" 
                    HorizontalAlignment="Center" VerticalAlignment="Center" 
-                   FontSize="20" FontWeight="Bold"/>
+                   FontSize="30" FontWeight="Bold"/>
         <TextBlock Text="Поиск: "
                        Grid.Row="2"
                        Grid.Column="3" Grid.ColumnSpan="2"
@@ -61,12 +67,13 @@
                       Grid.Column="5" Grid.ColumnSpan="4"
                       Grid.Row="2"
                       SelectionChanged="tb_searchFriend_SelectionChanged"/>
-        <ScrollViewer Grid.Row="6" Grid.RowSpan="9"
-                      Grid.Column="2" Grid.ColumnSpan="9">
+        <ScrollViewer Grid.Row="3" Grid.RowSpan="10"
+                      Grid.Column="1" Grid.ColumnSpan="12">
             <ListView x:Name="lv_friendColl"
-                      Grid.Row="6" Grid.RowSpan="9"
+                      Grid.Row="2" Grid.RowSpan="5"
                       Grid.Column="2" Grid.ColumnSpan="9"
-                      FontSize="20"
+                      FontSize="30"
+                       Background="#FFB773"
                       ItemsSource="{Binding friends}"
                       SelectionChanged="lv_friendColl_SelectionChanged">
                 <ListView.View>
@@ -84,7 +91,7 @@
                                 <DataTemplate>
                                     <Button x:Name="BtnFolow"
                                         Content="Написать"
-                                        Background="#FF780000"
+                                        Background="#04859D"
                                         BorderBrush="Black"
                                         Click="BtnChat_Click"/>
                                 </DataTemplate>

@@ -44,6 +44,20 @@ namespace KinolistKursach.Pages
             List<User> users = BdConnection.connection.User.Where(x => x.Nickname.Contains(tb_searchFriend.Text.Trim())).ToList();
             lv_friendColl.ItemsSource = users;
         }
+        private void TbBackMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
+
+        private void TbBackMouseEnter(object sender, MouseEventArgs e)
+        {
+            TbBack.Foreground = new SolidColorBrush(Colors.White);
+        }
+
+        private void TbBackMouseLeave(object sender, MouseEventArgs e)
+        {
+            TbBack.Foreground = new SolidColorBrush(Colors.Black);
+        }
 
         private void BtnChat_Click(object sender, RoutedEventArgs e)
         {
@@ -65,10 +79,10 @@ namespace KinolistKursach.Pages
                     BdConnection.connection.Follow.Add(follow);
                     BdConnection.connection.Follow.Add(follow1);
                     BdConnection.connection.SaveChanges();
-                    MessageBox.Show("Вы успешно подписались");
+                    MessageBox.Show("Вы успешно подружились");
                 }
                 {
-                    MessageBox.Show("Вы уже подписаны");
+                    MessageBox.Show("Вы уже друзья");
                 }
             }
         }

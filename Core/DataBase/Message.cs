@@ -12,22 +12,21 @@ namespace Core.DataBase
     using System;
     using System.Collections.Generic;
     
-    public partial class Collection
+    public partial class Message
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Collection()
+        public Message()
         {
-            this.Film_Collection = new HashSet<Film_Collection>();
+            this.MessInDialog = new HashSet<MessInDialog>();
         }
     
-        public int ID { get; set; }
-        public string Name { get; set; }
-        public Nullable<int> ID_User { get; set; }
-        public Nullable<bool> IsDeleted { get; set; }
-        public Nullable<bool> Inkognito { get; set; }
+        public int Id { get; set; }
+        public Nullable<int> IdSenderUser { get; set; }
+        public string TextMessage { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
     
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Film_Collection> Film_Collection { get; set; }
+        public virtual ICollection<MessInDialog> MessInDialog { get; set; }
     }
 }
