@@ -1,0 +1,98 @@
+﻿<Page x:Class="KinolistKursach.Pages.SearchFriendPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:KinolistKursach.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SearchFriendPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0"
+                    Grid.Column="0" Grid.ColumnSpan="13" 
+                    Background="#FF780000"/>
+        <StackPanel Grid.Column="0"
+                    Grid.Row="0" Grid.RowSpan="13"
+                    Background="#FF780000"/>
+        <TextBlock Text="КинокраД" 
+                   Grid.Row="0"
+                   Grid.Column="0" Grid.ColumnSpan="12" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center" 
+                   FontSize="20" FontWeight="Bold"/>
+        <TextBlock Text="Поиск: "
+                       Grid.Row="2"
+                       Grid.Column="3" Grid.ColumnSpan="2"
+                       FontSize="20"
+                       HorizontalAlignment="Right"
+                       FontWeight="Medium"/>
+        <TextBox Name="tb_searchFriend"
+                      FontSize="16"
+                      Grid.Column="5" Grid.ColumnSpan="4"
+                      Grid.Row="2"
+                      SelectionChanged="tb_searchFriend_SelectionChanged"/>
+        <ScrollViewer Grid.Row="6" Grid.RowSpan="9"
+                      Grid.Column="2" Grid.ColumnSpan="9">
+            <ListView x:Name="lv_friendColl"
+                      Grid.Row="6" Grid.RowSpan="9"
+                      Grid.Column="2" Grid.ColumnSpan="9"
+                      FontSize="20"
+                      ItemsSource="{Binding friends}"
+                      SelectionChanged="lv_friendColl_SelectionChanged">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding Photo}" Width="100"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Nickname}"/>
+                        <GridViewColumn>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button x:Name="BtnFolow"
+                                        Content="Написать"
+                                        Background="#FF780000"
+                                        BorderBrush="Black"
+                                        Click="BtnChat_Click"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </ScrollViewer>
+    </Grid>
+</Page>

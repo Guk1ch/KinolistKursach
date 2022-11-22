@@ -55,7 +55,7 @@ namespace KinolistKursach.Pages
 			Collection collection = LvUserColl.SelectedItem as Collection;
 			if (collection != null)
 			{
-				//NavigationService.Navigate(new FilmInCollectionFriendsPage(collection));
+				NavigationService.Navigate(new FilmInCollectionFriendsPage(collection));
 			}
 		}
 		private void TbBackMouseDown(object sender, MouseButtonEventArgs e)

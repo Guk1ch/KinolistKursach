@@ -70,5 +70,10 @@ namespace KinolistKursach.Pages
         {
 			NavigationService.Navigate(new FriendsPage());
         }
+
+        private void BtnSearchFriendClick(object sender, RoutedEventArgs e)
+        {
+			NavigationService.Navigate(new SearchFriendPage());
+        }
     }
 }

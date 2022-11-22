@@ -36,7 +36,7 @@ namespace KinolistKursach.Pages
 
         private void BtnChatClick(object sender, RoutedEventArgs e)
         {
-
+            
         }
         private void TextBlockMouseDown(object sender, MouseButtonEventArgs e)
         {
