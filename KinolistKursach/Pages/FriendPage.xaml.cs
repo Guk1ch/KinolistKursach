@@ -25,20 +25,20 @@ namespace KinolistKursach.Pages
 	{
 		public static ObservableCollection<Collection> collections { get; set; }
 		public static User profil { get; set; }
-		public FriendPage(User user)
+		public FriendPage(int user)
 		{
 			InitializeComponent();
-			profil = user;
-			collections = CollectionFunction.GetFriendCollection(user.ID);
+			profil = BdConnection.connection.User.FirstOrDefault(x => x.ID == user);
+			collections = CollectionFunction.GetFriendCollection(profil.ID);
 			LvUserColl.ItemsSource = collections;
-			var follower = BdConnection.connection.Follow.Where(z => z.ID_Follower_User == AuthorisPage.user.ID && z.ID_Following_User == user.ID).FirstOrDefault();
+			var follower = BdConnection.connection.Follow.Where(z => z.ID_Follower_User == AuthorisPage.user.ID && z.ID_Following_User == profil.ID).FirstOrDefault();
 
 			if (follower == null)
 			{
 				BtnFollow.Visibility = Visibility.Visible;
 			}
 
-			if (user.ID == AuthorisPage.user.ID)
+			if (profil.ID == AuthorisPage.user.ID)
 			{
 				BtnFollow.Visibility = Visibility.Hidden;
 			}
@@ -46,7 +46,7 @@ namespace KinolistKursach.Pages
 			this.DataContext = this;
 		}
 
-        private void BtnWrite_Click(object sender, RoutedEventArgs e)
+        private void BtnWriteClick(object sender, RoutedEventArgs e)
         {
 
         }

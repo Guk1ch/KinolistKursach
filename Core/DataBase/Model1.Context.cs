@@ -13,10 +13,10 @@ namespace Core.DataBase
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class KinolistEntities1 : DbContext
+    public partial class KinolistEntities : DbContext
     {
-        public KinolistEntities1()
-            : base("name=KinolistEntities1")
+        public KinolistEntities()
+            : base("name=KinolistEntities")
         {
         }
     

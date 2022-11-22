@@ -27,6 +27,8 @@ namespace KinolistKursach.Pages
         public AuthorisPage()
 		{
 			InitializeComponent();
+
+            TbLogin.Text = Properties.Settings.Default.Login.ToString();
 		}
         private void BtnRegistClick(object sender, RoutedEventArgs e)
         {

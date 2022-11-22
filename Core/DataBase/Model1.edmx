@@ -267,7 +267,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="KinolistEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="KinolistEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Collection" EntityType="Self.Collection" />
           <EntitySet Name="Film" EntityType="Self.Film" />
           <EntitySet Name="Film_Collection" EntityType="Self.Film_Collection" />
@@ -299,7 +299,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище KinolistModelContainer" CdmEntityContainer="KinolistEntities1">
+        <EntityContainerMapping StorageEntityContainer="Хранилище KinolistModelContainer" CdmEntityContainer="KinolistEntities">
           <EntitySetMapping Name="Collection">
             <EntityTypeMapping TypeName="KinolistModel.Collection">
               <MappingFragment StoreEntitySet="Collection">

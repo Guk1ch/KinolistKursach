@@ -91,7 +91,7 @@
                 Background="#04859D"
                 FontWeight="Bold"
                 Foreground="Black"
-                Click="BtnCollClick"/>
+                Click="BtnFriendsClick"/>
         <Button x:Name="BtnStat"
                 Content="Статистика"
                 Grid.Column="2"

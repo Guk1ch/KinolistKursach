@@ -65,5 +65,10 @@ namespace KinolistKursach.Pages
         {
             TbBack.Foreground = new SolidColorBrush(Colors.Black);
         }
-	}
+
+        private void BtnFriendsClick(object sender, RoutedEventArgs e)
+        {
+			NavigationService.Navigate(new FriendsPage());
+        }
+    }
 }
