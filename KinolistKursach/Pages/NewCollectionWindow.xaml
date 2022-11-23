@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KinolistKursach.Pages"
         mc:Ignorable="d"
-        Title="NewCollectionWindow" Height="450" Width="800">
+        Title="Новая коллекция" Height="450" Width="800">
     <Grid Background="#FFB773">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
