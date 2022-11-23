@@ -12,13 +12,12 @@ namespace Core.DataBase
     using System;
     using System.Collections.Generic;
     
-    public partial class MessInDialog
+    public partial class sysdiagrams
     {
-        public int ID { get; set; }
-        public Nullable<int> IdMessage { get; set; }
-        public Nullable<int> IdFollow { get; set; }
-    
-        public virtual Follow Follow { get; set; }
-        public virtual Message Message { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

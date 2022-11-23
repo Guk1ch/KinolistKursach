@@ -43,12 +43,20 @@ namespace KinolistKursach.Pages
 				BtnFollow.Visibility = Visibility.Hidden;
 			}
 
+			Follow folow = BdConnection.connection.Follow.FirstOrDefault(x => x.ID_Follower_User == AuthorisPage.user.ID && x.ID_Following_User == profil.ID);
+			Follow follow = BdConnection.connection.Follow.FirstOrDefault(x => x.ID_Follower_User == profil.ID && x.ID_Following_User == AuthorisPage.user.ID);
+			if (follow == null && folow == null)
+            {
+				BtnWrite.Visibility = Visibility.Hidden;
+			}
+
 			this.DataContext = this;
 		}
 
         private void BtnWriteClick(object sender, RoutedEventArgs e)
         {
-
+			ChatWindow chatWindow = new ChatWindow(profil);
+			chatWindow.ShowDialog();
         }
 		private void LvUserCollSelectionChanged(object sender, SelectionChangedEventArgs e)
 		{

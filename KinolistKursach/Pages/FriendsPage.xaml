@@ -62,21 +62,8 @@
                     </GridViewColumn>
 
                     <GridViewColumn DisplayMemberBinding="{Binding User1.Nickname}"/>
-                    <GridViewColumn>
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button x:Name="BtnChat"
-                                        Content="Написать"
-                                        Background="#04859D"
-                                        BorderBrush="Black"
-                                        Click="BtnChatClick"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
-
-
     </Grid>
 </Page>

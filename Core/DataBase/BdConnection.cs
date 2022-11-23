@@ -8,6 +8,6 @@ namespace Core.DataBase
 {
 	public class BdConnection
 	{
-		public static KinolistFinalEntities connection = new KinolistFinalEntities();
+		public static KinolistEntities connection = new KinolistEntities();
 	}
 }

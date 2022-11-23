@@ -34,10 +34,6 @@ namespace KinolistKursach.Pages
             DataContext = this;
 		}
 
-        private void BtnChatClick(object sender, RoutedEventArgs e)
-        {
-            
-        }
         private void TextBlockMouseDown(object sender, MouseButtonEventArgs e)
         {
             NavigationService.Navigate(new ProfilPage(AuthorisPage.user));
