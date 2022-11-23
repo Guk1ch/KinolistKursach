@@ -23,7 +23,7 @@ namespace Core.Functions
             BdConnection.connection.User.Add(newUser);
             BdConnection.connection.SaveChanges();
             NewUserCollection();
-            //User newRegUser = FriendFunction.GetUsers().Last();
+            
         }
         public static bool UniqueLogin(string login)
         {
